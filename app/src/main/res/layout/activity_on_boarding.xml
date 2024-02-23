@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoardingActivity">
+
+    <ImageView
+        android:id="@+id/ivOnBoardingBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <ImageView
+        android:id="@+id/ivLaunchLogo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="64dp"
+        android:layout_weight="1"
+        android:scaleType="center"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tvOnBoardingHello"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/alegreya_sans_black"
+        android:text="ПРИВЕТ"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivLaunchLogo"
+        app:layout_constraintStart_toStartOf="@+id/ivLaunchLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivLaunchLogo" />
+
+    <TextView
+        android:id="@+id/tvOnBoardingHelloText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Наслаждайся отборочными. Будь внимателен. Делай хорошо."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvOnBoardingHello"
+        app:layout_constraintStart_toStartOf="@+id/tvOnBoardingHello"
+        app:layout_constraintTop_toBottomOf="@+id/tvOnBoardingHello" />
+
+    <TextView
+        android:id="@+id/tvOnBoardingRegistration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Еще нет аккаунта? Зарегистрируйтесь"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOnBoardingBackground"
+        app:layout_constraintEnd_toEndOf="@+id/btnLoginLogin"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/btnLoginLogin" />
+
+    <Button
+        android:id="@+id/btnLoginLogin"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#7C9A92"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Войти в аккаунт"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvOnBoardingRegistration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

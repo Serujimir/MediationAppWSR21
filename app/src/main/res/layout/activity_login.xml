@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#253334"
+    tools:context=".LoginActivity">
+
+    <Button
+        android:id="@+id/btnLoginLogin"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#7C9A92"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Авторизироваться"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etLoginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginPassword" />
+
+    <Button
+        android:id="@+id/btnLoginProfile"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#7C9A92"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Профиль"
+        android:textSize="24sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etLoginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginRegister" />
+
+    <ImageView
+        android:id="@+id/ivLoginLogo"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="left|center_vertical"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tvLoginSignInText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Вход"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/ivLoginLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo" />
+
+    <EditText
+        android:id="@+id/etLoginEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#BEC2C2"
+        android:ems="10"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:hint="  Email"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvLoginSignInText"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginSignInText" />
+
+    <EditText
+        android:id="@+id/etLoginPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#BEC2C2"
+        android:ems="10"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:hint="  Пароль"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/etLoginEmail"
+        app:layout_constraintStart_toStartOf="@+id/etLoginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
+
+    <TextView
+        android:id="@+id/tvLoginRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/alegreya_sans_regular"
+        android:text="Регистрация"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/btnLoginLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLoginLogin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

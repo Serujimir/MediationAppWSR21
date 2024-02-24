@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ivPhoto"
+            android:id="@+id/ivProfilePhotos"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -31,7 +31,7 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/ivPhoto">
+            app:layout_constraintStart_toStartOf="@+id/ivProfilePhotos">
 
             <TextView
                 android:id="@+id/tvPhotoCreateDate"

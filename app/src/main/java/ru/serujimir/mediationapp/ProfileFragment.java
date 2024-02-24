@@ -52,6 +52,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Stream;
 
 import ru.serujimir.mediationapp.Adapters.UserPhotosAdapter;
 import ru.serujimir.mediationapp.Parsing.UserPhoto;
@@ -67,9 +71,11 @@ public class ProfileFragment extends Fragment {
     UserPhotosAdapter userPhotosAdapter;
 
     int photos_count;
+    int last_photo_number;
 
     ArrayList<UserPhoto> userPhotoArrayList;
     ActivityResultLauncher<String> iTakePhoto;
+    PhotosInterface photosInterface;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,9 +99,9 @@ public class ProfileFragment extends Fragment {
                 Bitmap bitmap;
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), o);
-                    savaImageToAppFolder(bitmap, "image_" + photos_count);
+                    savaImageToAppFolder(bitmap, "image_" + (last_photo_number + 1));
                 } catch (IOException e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("TEST", e.getMessage());
                 }
             }
         });
@@ -107,9 +113,10 @@ public class ProfileFragment extends Fragment {
 
     public void init() {
         userPhotoArrayList = new ArrayList<>();
+        photosInterface = this::getAllPhotos;
 
         rvPhotos = view.findViewById(R.id.rvPhotos);
-        userPhotosAdapter = new UserPhotosAdapter(getContext(), userPhotoArrayList);
+        userPhotosAdapter = new UserPhotosAdapter(getContext(), userPhotoArrayList, photosInterface);
         rvPhotos.setAdapter(userPhotosAdapter);
         rvPhotos.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false));
 
@@ -119,7 +126,13 @@ public class ProfileFragment extends Fragment {
         btnProfileAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iTakePhoto.launch("image/*");
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        iTakePhoto.launch("image/*");
+                    }
+                });
+                thread.start();
             }
         });
 
@@ -137,7 +150,33 @@ public class ProfileFragment extends Fragment {
             appFolder.mkdir();
         }
         String[] photos = appFolder.list();
+        Arrays.sort(photos);
+
         photos_count = photos.length;
+
+        if (photos_count >= 1) {
+            int number = 0;
+            for(int i = 0; i < photos.length; i++) {
+                StringBuilder builder = new StringBuilder();
+                for(int s = photos[i].length() - 6; s > 0; s--) {
+                    char ch = photos[i].charAt(s);
+                    if (ch != '_') {
+                        builder.append(ch);
+                    } else {
+                        break;
+                    }
+                }
+                int current_number = Integer.parseInt(builder.toString());
+                if (current_number > number) {
+                    number = current_number;
+                }
+            }
+
+            last_photo_number = number;
+        } else {
+            last_photo_number = -1;
+        }
+        Log.d("TEST", Arrays.toString(photos));
 
         for (int i = 0; i < photos_count; i++) {
             userPhotoArrayList.add(new UserPhoto(photos[i]));
@@ -158,7 +197,7 @@ public class ProfileFragment extends Fragment {
             fileOutputStream.close();
             getAllPhotos();
         } catch (Exception e) {
-            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+            Log.d("TEST", e.getMessage());
         }
     }
 }
